@@ -1,2 +1,1 @@
 # champions-api
-# champions-api
