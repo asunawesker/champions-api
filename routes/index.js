@@ -1,7 +1,8 @@
-const graphqlHTTP = require('express-graphql')
-const schemas = require('../schemas/championSchema')
-const cors = require('cors')
-const root = require('../services')
+const graphqlHTTP = require('express-graphql');
+const schemas = require('../schemas/championSchema');
+const cors = require('cors');
+const root = require('../services');
+const expressPlayground = require("graphql-playground-middleware-express").default;
 
 const corsOptions = {
   "origin": process.env.WHITELIST,
@@ -16,6 +17,7 @@ const init = (server) => {
     rootValue: root,
     graphiql: true
   }))
+  server.get('/champions', expressPlayground({ endpoint: '/champions' }));
 }
 
 module.exports = {
